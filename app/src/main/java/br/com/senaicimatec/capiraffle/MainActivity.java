@@ -90,3 +90,22 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 }
+
+/* Tabela Cria Rifa:
+- id_rifa
+- nome do criador
+- cpf do criador
+- chave pix do criador
+- titulo da rifa
+- data termino
+- premio
+- valor de cada numero
+ */
+
+/* Tabela Compra Rifa:
+- id_compra
+- nome comprador
+- cpf comprador
+- id da rifa - FK
+- numeros escolhidos
+ */
