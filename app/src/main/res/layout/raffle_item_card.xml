@@ -27,7 +27,6 @@
             android:padding="5dp"
             android:src="@drawable/bingo" />
 
-        <!-- Text View to display Course Name -->
         <TextView
             android:id="@+id/tituloRifa"
             android:layout_width="match_parent"
@@ -66,8 +65,6 @@
             android:text="Premio"
             app:drawableStartCompat="@drawable/trophy" />
 
-        <!-- Text View to display Course Rating -->
-        <!-- Image used in present in drawable folder -->
         <TextView
             android:id="@+id/dataRifa"
             android:layout_width="match_parent"

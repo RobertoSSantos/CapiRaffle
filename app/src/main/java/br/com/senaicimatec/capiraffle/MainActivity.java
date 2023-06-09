@@ -27,3 +27,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
+/*
+O que falta:
+
+- A tela da rifa
+- Tela de recibo
+
+- Passar as informacoes entre as telas
+
+
+
+
+
+- Home (id_rifa) -> tela da rifa
+- tela rifa (id_rifa) e (numeros) -> tela da compra
+- tela da compra (id_comprador) -> Recibo
+
+ */

@@ -10,9 +10,13 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     @Override
@@ -26,7 +30,27 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ArrayList<RifaModel> rifaModelArrayList =new ArrayList<>();
+
+        // Para testes
+        RifaModel rifa1 = new RifaModel(1, "Rifa relogio", "Nicoboco", "relogio", "12/07");
+        rifaModelArrayList.add(rifa1);
+        /*
+        Implementar logica para receber os dados do banco, criar os objetos e adicionar eles ao array list.
+         */
+
         FloatingActionButton cadFab = view.findViewById(R.id.cadFab);
+        ListView listaRifas =view.findViewById(R.id.rifaLista);
+        ListAdapter listAdapter= new ListAdapter(getContext(),rifaModelArrayList);
+
+        listaRifas.setAdapter(listAdapter);
+
+        listaRifas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_rifaFragment);
+            }
+        });
 
         cadFab.setOnClickListener(new View.OnClickListener() {
             @Override
