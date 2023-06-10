@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="appbase">#03DAC6</color>
+    <color name="btnFree">#2aa84c</color>
+    <color name="btnOff">#a82a2a</color>
 </resources>
