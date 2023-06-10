@@ -15,7 +15,7 @@ import androidx.cardview.widget.CardView;
 
 import java.util.ArrayList;
 
-import br.com.senaicimatec.capiraffle.modules.DezenasModel;
+import br.com.senaicimatec.capiraffle.models.DezenasModel;
 import br.com.senaicimatec.capiraffle.R;
 
 public class GridAdapter extends ArrayAdapter<DezenasModel> {

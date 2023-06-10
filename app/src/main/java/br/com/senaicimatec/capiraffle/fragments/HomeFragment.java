@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import br.com.senaicimatec.capiraffle.R;
-import br.com.senaicimatec.capiraffle.modules.RifaModel;
+import br.com.senaicimatec.capiraffle.models.RifaModel;
 import br.com.senaicimatec.capiraffle.adapter.ListAdapter;
 
 public class HomeFragment extends Fragment {

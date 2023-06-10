@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import br.com.senaicimatec.capiraffle.R;
-import br.com.senaicimatec.capiraffle.modules.DezenasModel;
+import br.com.senaicimatec.capiraffle.models.DezenasModel;
 import br.com.senaicimatec.capiraffle.adapter.GridAdapter;
 
 public class RifaFragment extends Fragment {

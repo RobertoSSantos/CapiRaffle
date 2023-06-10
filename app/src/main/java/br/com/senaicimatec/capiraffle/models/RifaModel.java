@@ -1,4 +1,4 @@
-package br.com.senaicimatec.capiraffle.modules;
+package br.com.senaicimatec.capiraffle.models;
 
 public class RifaModel {
     private Integer id;

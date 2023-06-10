@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ReciboFragment"
-    android:background="@color/teal_200">
+    android:background="@color/splashColor">
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"

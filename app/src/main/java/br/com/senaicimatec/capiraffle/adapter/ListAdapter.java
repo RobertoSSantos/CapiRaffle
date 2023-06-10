@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import br.com.senaicimatec.capiraffle.modules.RifaModel;
+import br.com.senaicimatec.capiraffle.models.RifaModel;
 import br.com.senaicimatec.capiraffle.R;
 
 public class ListAdapter extends ArrayAdapter<RifaModel> {
