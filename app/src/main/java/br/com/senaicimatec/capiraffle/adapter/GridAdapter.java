@@ -1,4 +1,4 @@
-package br.com.senaicimatec.capiraffle;
+package br.com.senaicimatec.capiraffle.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,7 +15,12 @@ import androidx.cardview.widget.CardView;
 
 import java.util.ArrayList;
 
+import br.com.senaicimatec.capiraffle.modules.DezenasModel;
+import br.com.senaicimatec.capiraffle.R;
+
 public class GridAdapter extends ArrayAdapter<DezenasModel> {
+
+    ArrayList<String> listDezenas = new ArrayList<>();
 
     public GridAdapter(@NonNull Context context, ArrayList<DezenasModel> dezenasModelArrayList) {
         super(context,0, dezenasModelArrayList);
@@ -54,6 +59,7 @@ public class GridAdapter extends ArrayAdapter<DezenasModel> {
                 if(dezenasModel.getCondicao()){
                     cardBackground.setCardBackgroundColor(vermelhoFechado);
                     dezenasModel.setCondicao(false);
+                    listDezenas.add(dezenasModel.getDezena());
                 }
                 else {
                     Toast.makeText(getContext(), "Dezena ja selecionada", Toast.LENGTH_SHORT).show();
@@ -61,7 +67,10 @@ public class GridAdapter extends ArrayAdapter<DezenasModel> {
             }
         });
 
-
         return gridItemView;
+    }
+
+    public ArrayList<String> getListDezenas(){
+        return listDezenas;
     }
 }

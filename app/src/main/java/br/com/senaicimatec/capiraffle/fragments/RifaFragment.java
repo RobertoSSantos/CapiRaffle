@@ -1,21 +1,24 @@
-package br.com.senaicimatec.capiraffle;
+package br.com.senaicimatec.capiraffle.fragments;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import br.com.senaicimatec.capiraffle.R;
+import br.com.senaicimatec.capiraffle.modules.DezenasModel;
+import br.com.senaicimatec.capiraffle.adapter.GridAdapter;
 
 public class RifaFragment extends Fragment {
 
@@ -32,8 +35,6 @@ public class RifaFragment extends Fragment {
 
         // Instanciar todos os objetos
         ArrayList<DezenasModel> dezenasModelArrayList = new ArrayList<>();
-        // Lista para armazenar os numeros clicados pelo usuario
-        ArrayList<String> listaDezenas = new ArrayList<>();
 
         TextView rifaTitulo, rifaCriador, rifaPremio, rifaData;
         GridView gridView;
@@ -55,15 +56,26 @@ public class RifaFragment extends Fragment {
             dezenasModelArrayList.add(dezenasModel);
         }
 
+        // Request da API para definir os valores ja marcados
+
         // Setar o adapter
         gridView.setAdapter(gridAdapter);
 
-        // Bloco dos dados textuais
+        // Lista para armazenar os numeros clicados pelo usuario
+        // Enviar lista para o banco
+        ArrayList<String> listaDezenas = gridAdapter.getListDezenas();
 
-        //Bloco do itemClick
+        // Bloco dos dados textuais
 
 
         //Bloco do Button
-
+        compraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Bundle -> listaNumeros, o id da rifa
+                // Mudar tela e enviar o bundle
+                Navigation.findNavController(view).navigate(R.id.action_rifaFragment_to_compraFragment);
+            }
+        });
     }
 }

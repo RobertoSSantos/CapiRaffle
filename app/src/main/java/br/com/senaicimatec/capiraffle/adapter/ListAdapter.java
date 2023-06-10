@@ -1,4 +1,4 @@
-package br.com.senaicimatec.capiraffle;
+package br.com.senaicimatec.capiraffle.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+
+import br.com.senaicimatec.capiraffle.modules.RifaModel;
+import br.com.senaicimatec.capiraffle.R;
 
 public class ListAdapter extends ArrayAdapter<RifaModel> {
 

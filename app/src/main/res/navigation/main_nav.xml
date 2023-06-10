@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="br.com.senaicimatec.capiraffle.HomeFragment"
+        android:name="br.com.senaicimatec.capiraffle.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/cadastrarRifaFragment"
-        android:name="br.com.senaicimatec.capiraffle.CadastrarRifaFragment"
+        android:name="br.com.senaicimatec.capiraffle.fragments.CadastrarRifaFragment"
         android:label="fragment_cadastrar_rifa"
         tools:layout="@layout/fragment_cadastrar_rifa" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/compraFragment"
-        android:name="br.com.senaicimatec.capiraffle.CompraFragment"
+        android:name="br.com.senaicimatec.capiraffle.fragments.CompraFragment"
         android:label="fragment_compra"
         tools:layout="@layout/fragment_compra" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/rifaFragment"
-        android:name="br.com.senaicimatec.capiraffle.RifaFragment"
+        android:name="br.com.senaicimatec.capiraffle.fragments.RifaFragment"
         android:label="fragment_rifa"
         tools:layout="@layout/fragment_rifa" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/reciboFragment"
-        android:name="br.com.senaicimatec.capiraffle.ReciboFragment"
+        android:name="br.com.senaicimatec.capiraffle.fragments.ReciboFragment"
         android:label="fragment_recibo"
         tools:layout="@layout/fragment_recibo" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="br.com.senaicimatec.capiraffle.SplashFragment"
+        android:name="br.com.senaicimatec.capiraffle.fragments.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action

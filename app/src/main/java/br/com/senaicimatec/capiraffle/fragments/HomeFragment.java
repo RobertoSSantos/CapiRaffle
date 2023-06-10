@@ -1,4 +1,4 @@
-package br.com.senaicimatec.capiraffle;
+package br.com.senaicimatec.capiraffle.fragments;
 
 import android.os.Bundle;
 
@@ -11,12 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import br.com.senaicimatec.capiraffle.R;
+import br.com.senaicimatec.capiraffle.modules.RifaModel;
+import br.com.senaicimatec.capiraffle.adapter.ListAdapter;
 
 public class HomeFragment extends Fragment {
     @Override
