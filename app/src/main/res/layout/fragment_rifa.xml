@@ -50,10 +50,22 @@
              app:drawableStartCompat="@drawable/trophy" />
 
          <TextView
-             android:id="@+id/rifaFragData"
+             android:id="@+id/rifaFragValorNum"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_below="@id/rifaFragPremio"
+             android:layout_marginStart="10dp"
+             android:layout_marginTop="2dp"
+             android:drawablePadding="2dp"
+             android:textColor="@color/black"
+             android:text="R$ 10,00"
+             app:drawableStartCompat="@drawable/baseline_monetization_on_24" />
+
+         <TextView
+             android:id="@+id/rifaFragData"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/rifaFragValorNum"
              android:layout_marginStart="10dp"
              android:layout_marginTop="2dp"
              android:drawablePadding="2dp"

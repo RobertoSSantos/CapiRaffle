@@ -1,22 +1,8 @@
 package br.com.senaicimatec.capiraffle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import br.com.senaicimatec.capiraffle.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,19 +15,33 @@ public class MainActivity extends AppCompatActivity {
 }
 
 /*
-O que falta:
+Situacao atual:
 
-- A tela da rifa
-- Tela de recibo
+Tela Splash:
+    Completo
 
-- Passar as informacoes entre as telas
+Tela Home:
+    envio -> (id) para tela Rifa [nao feito]
+    uso geral -> instanciar os objetos de rifa a partir dos dados do banco [nao feito]
 
+Tela Cadastro:
+    envio -> objeto de rifa criado para o banco por meio da API [nao feito]
+    uso geral -> verificacoes de nulos [feito]
 
+Tela de Rifas:
+    envio -> Array dos numeros selecionados para Tela de Compra [feito]
+    envio -> ChavePix do criador e titulo da rifa para a tela de compra [parcialmente feito]
+    uso geral -> Definir os numeros ja marcados [nao feito]
+    uso geral -> receber dados do banco para instanciar o objeto de rifa [nao feito]
 
+Tela de Compra:
+    envio -> Nome comprador, cpf comprador, array de numeros selecionados para a tela de recibo [parcialmente feito]
+    envio -> Titulo da Rifa para a tela de recibo [parcialmente feito]
+    envio -> dados do objeto comprador para o banco [nao feito]
+    uso geral -> verificacoes de nulo [feito]
+    uso geral -> mensagem de compra realizada [feito]
 
-
-- Home (id_rifa) -> tela da rifa
-- tela rifa (id_rifa) e (numeros) -> tela da compra
-- tela da compra (id_comprador) -> Recibo
+Tela de Recibo:
+    uso geral -> definir os valores a serem apresentados nas Tvs a partir dos dados recebidos do fragmento de compra [feito]
 
  */

@@ -34,6 +34,15 @@
         <action
             android:id="@+id/action_compraFragment_to_reciboFragment"
             app:destination="@id/reciboFragment" />
+        <argument
+            android:name="dezenas"
+            app:argType="string[]" />
+        <argument
+            android:name="chavePixCriador"
+            app:argType="string" />
+        <argument
+            android:name="tituloRifa"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/rifaFragment"
@@ -52,6 +61,18 @@
         <action
             android:id="@+id/action_reciboFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="nomeComprador"
+            app:argType="string" />
+        <argument
+            android:name="cpfComprador"
+            app:argType="string" />
+        <argument
+            android:name="tituloRifa"
+            app:argType="string" />
+        <argument
+            android:name="dezenas"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

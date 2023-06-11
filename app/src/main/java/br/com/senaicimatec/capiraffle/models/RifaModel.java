@@ -2,7 +2,11 @@ package br.com.senaicimatec.capiraffle.models;
 
 public class RifaModel {
     private Integer id;
-    private String titulo, nomeCriador, premio, dataFinal;
+    private String nomeCriador, cpfCriador, chavePixCriador, titulo,premio, valNum, dataFinal;
+
+    public RifaModel(){
+
+    }
 
     public RifaModel(Integer id, String titulo, String nomeCriador, String premio, String dataFinal) {
         this.id = id;
@@ -50,5 +54,29 @@ public class RifaModel {
 
     public void setDataFinal(String dataFinal) {
         this.dataFinal = dataFinal;
+    }
+
+    public String getCpfCriador() {
+        return cpfCriador;
+    }
+
+    public void setCpfCriador(String cpfCriador) {
+        this.cpfCriador = cpfCriador;
+    }
+
+    public String getChavePixCriador() {
+        return chavePixCriador;
+    }
+
+    public void setChavePixCriador(String chavePixCriador) {
+        this.chavePixCriador = chavePixCriador;
+    }
+
+    public String getValNum() {
+        return valNum;
+    }
+
+    public void setValNum(String valNum) {
+        this.valNum = valNum;
     }
 }

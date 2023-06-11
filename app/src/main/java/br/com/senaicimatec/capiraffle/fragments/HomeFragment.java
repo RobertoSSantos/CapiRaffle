@@ -52,6 +52,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_rifaFragment);
+                // Enviar o id da rifa (ou objeto com os dados instanciados no objeto, a decidir)
             }
         });
 

@@ -13,19 +13,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import br.com.senaicimatec.capiraffle.R;
 import br.com.senaicimatec.capiraffle.models.DezenasModel;
 import br.com.senaicimatec.capiraffle.adapter.GridAdapter;
+import br.com.senaicimatec.capiraffle.models.RifaModel;
 
 public class RifaFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_rifa, container, false);
     }
 
@@ -33,23 +34,22 @@ public class RifaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Instanciar todos os objetos
         ArrayList<DezenasModel> dezenasModelArrayList = new ArrayList<>();
 
-        TextView rifaTitulo, rifaCriador, rifaPremio, rifaData;
+        TextView rifaTitulo, rifaCriador, rifaPremio, rifaValNum, rifaData;
         GridView gridView;
         Button compraBtn;
 
         rifaTitulo = view.findViewById(R.id.rifaFragTitulo);
         rifaCriador = view.findViewById(R.id.rifaFragCriador);
         rifaPremio = view.findViewById(R.id.rifaFragPremio);
+        rifaValNum = view.findViewById(R.id.rifaFragValorNum);
         rifaData = view.findViewById(R.id.rifaFragData);
         gridView = view.findViewById(R.id.griView);
         compraBtn = view.findViewById(R.id.btnCompra);
 
         GridAdapter gridAdapter = new GridAdapter(getContext(), dezenasModelArrayList);
 
-        // Preencher o array
         for(int i = 1; i <= 50; i++){
             String num = Integer.toString(i);
             DezenasModel dezenasModel = new DezenasModel(num);
@@ -58,23 +58,35 @@ public class RifaFragment extends Fragment {
 
         // Request da API para definir os valores ja marcados
 
-        // Setar o adapter
+
         gridView.setAdapter(gridAdapter);
 
-        // Lista para armazenar os numeros clicados pelo usuario
-        // Enviar lista para o banco
+        RifaModel rifaModel = new RifaModel();
+        Bundle bundle = new Bundle();
+
+        /*
+        Logica para receber os dados da rifa do banco e fazer os sets para o objeto
+         */
+
+        rifaTitulo.setText(rifaModel.getTitulo());
+        rifaCriador.setText(rifaModel.getNomeCriador());
+        rifaPremio.setText(rifaModel.getPremio());
+        rifaValNum.setText(rifaModel.getValNum());
+        rifaData.setText(rifaModel.getDataFinal());
+
         ArrayList<String> listaDezenas = gridAdapter.getListDezenas();
-
-        // Bloco dos dados textuais
-
-
-        //Bloco do Button
         compraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Bundle -> listaNumeros, o id da rifa
-                // Mudar tela e enviar o bundle
-                Navigation.findNavController(view).navigate(R.id.action_rifaFragment_to_compraFragment);
+                if(listaDezenas != null){
+                    String[] arrayDezenas = listaDezenas.toArray(new String[listaDezenas.size()]);
+                    bundle.putStringArray("dezenas", arrayDezenas);
+                    //bundle.putString("chavePixCriador", rifaModel.getChavePixCriador());
+                    //bundle.putString("tituloRifa", rifaModel.getTitulo());
+                    Navigation.findNavController(view).navigate(R.id.action_rifaFragment_to_compraFragment,bundle);
+                } else {
+                    Toast.makeText(getContext(), "Selecione pelo menos um numero", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
