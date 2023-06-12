@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_rifaFragment_to_compraFragment"
             app:destination="@id/compraFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/reciboFragment"

@@ -1,6 +1,8 @@
 package br.com.senaicimatec.capiraffle.models;
 
-public class RifaModel {
+import java.io.Serializable;
+
+public class RifaModel implements Serializable {
     private Integer id;
     private String nomeCriador, cpfCriador, chavePixCriador, titulo,premio, valNum, dataFinal;
 

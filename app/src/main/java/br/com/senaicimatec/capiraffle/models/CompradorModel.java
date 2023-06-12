@@ -1,7 +1,9 @@
 package br.com.senaicimatec.capiraffle.models;
 
-public class CompradorModel {
-    private int idComprador, idRifa;
+import java.io.Serializable;
+
+public class CompradorModel implements Serializable {
+    private Integer idComprador, idRifa;
     private String nomeComprador, cpfComprador, numselecionados;
 
     public CompradorModel(){

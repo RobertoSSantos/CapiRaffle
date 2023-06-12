@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.senaicimatec.capiraffle.R;
+import br.com.senaicimatec.capiraffle.dao.RifaDao;
 import br.com.senaicimatec.capiraffle.models.RifaModel;
 
 public class CadastrarRifaFragment extends Fragment {
@@ -31,6 +32,7 @@ public class CadastrarRifaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RifaModel rifaModel = new RifaModel();
+        RifaDao rifaDao = new RifaDao(getContext());
         EditText nomeCriador, cpfCriador, chavePixCriador, tituloRifa, premioRifa, valorRifa, dataFinalRifa;
         Button cadastrarBtn;
 
@@ -69,12 +71,10 @@ public class CadastrarRifaFragment extends Fragment {
                     rifaModel.setValNum(valorRifa.getText().toString());
                     rifaModel.setDataFinal(dataFinalRifa.getText().toString());
 
-                    /*
-                    Logica para envio do rifaModel para o banco, e o id tb
-                     */
+                   long id = rifaDao.inserirRifa(rifaModel);
 
                     Navigation.findNavController(view).navigate(R.id.action_cadastrarRifaFragment_to_homeFragment);
-                    Toast.makeText(getContext(), rifaModel.getTitulo() + " Adicionada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), rifaModel.getTitulo() + " Adicionada com id: " + id, Toast.LENGTH_SHORT).show();
                 }
 
             }

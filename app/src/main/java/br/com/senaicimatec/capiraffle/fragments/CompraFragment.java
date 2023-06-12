@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import br.com.senaicimatec.capiraffle.R;
+import br.com.senaicimatec.capiraffle.dao.CompradorDao;
 import br.com.senaicimatec.capiraffle.models.CompradorModel;
 
 public class CompraFragment extends Fragment {
@@ -37,12 +38,15 @@ public class CompraFragment extends Fragment {
         TextView numsTv, pixTv;
         Button finalizarCompraBtn;
 
+        CompradorDao compradorDao = new CompradorDao(getContext());
+
         Bundle bundle = new Bundle();
         CompradorModel compradorModel = new CompradorModel();
 
         // apenas armazena o valor do titulo para repassa-lo para o proximo fragmento
-        //String tituloRifa = getArguments().getString("tituloRifa");
-        //String chavePix = getArguments().getString("chavePixCriador");
+        int id = getArguments().getInt("id");
+        String tituloRifa = getArguments().getString("tituloRifa");
+        String chavePix = getArguments().getString("chavePixCriador");
         ArrayList<String> data = new ArrayList<>(Arrays.asList(getArguments().getStringArray("dezenas")));
 
         nomeComprador = view.findViewById(R.id.cadastroNomeComprador);
@@ -53,11 +57,8 @@ public class CompraFragment extends Fragment {
 
         EditText[] editTexts = {nomeComprador, cpfComprador};
 
-        // Seta o texto do campo das dezenas selecionadas, a partir dos dados recebidos do outro fragmento
         numsTv.setText(data.toString());
-
-        // Seta o texto do campo da chave pix, a partir dos dados recebidos do outro fragmento
-        //pixTv.setText(chavePix);
+        pixTv.setText(chavePix);
 
         finalizarCompraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,17 +77,18 @@ public class CompraFragment extends Fragment {
                 } else {
                     compradorModel.setNomeComprador(nomeComprador.getText().toString());
                     compradorModel.setCpfComprador(cpfComprador.getText().toString());
+                    compradorModel.setNumselecionados(data.toString());
+                    compradorModel.setIdRifa(id);
 
-                    // Constroi o bundle com os argumentos a serem passados para a tela de recibo
-                    /*
+                    long id = compradorDao.inserirComprador(compradorModel);
+
                     bundle.putString("nomeComprador", compradorModel.getNomeComprador());
                     bundle.putString("cpfComprador", compradorModel.getCpfComprador());
                     bundle.putString("tituloRifa", tituloRifa);
-                     */
                     bundle.putStringArray("dezenas", data.toArray(new String[data.size()]));
 
                     Navigation.findNavController(view).navigate(R.id.action_compraFragment_to_reciboFragment, bundle);
-                    Toast.makeText(getContext(), "Compra Realizada!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Compra Realizada! comprador inserido no banco com id " + id, Toast.LENGTH_SHORT).show();
                 }
 
             }

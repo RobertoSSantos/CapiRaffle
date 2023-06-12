@@ -18,6 +18,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import br.com.senaicimatec.capiraffle.R;
+import br.com.senaicimatec.capiraffle.dao.CompradorDao;
+import br.com.senaicimatec.capiraffle.dao.RifaDao;
 import br.com.senaicimatec.capiraffle.models.DezenasModel;
 import br.com.senaicimatec.capiraffle.adapter.GridAdapter;
 import br.com.senaicimatec.capiraffle.models.RifaModel;
@@ -34,7 +36,10 @@ public class RifaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        RifaDao rifaDao = new RifaDao(getContext());
         ArrayList<DezenasModel> dezenasModelArrayList = new ArrayList<>();
+
+        int id = getArguments().getInt("id");
 
         TextView rifaTitulo, rifaCriador, rifaPremio, rifaValNum, rifaData;
         GridView gridView;
@@ -48,7 +53,6 @@ public class RifaFragment extends Fragment {
         gridView = view.findViewById(R.id.griView);
         compraBtn = view.findViewById(R.id.btnCompra);
 
-        GridAdapter gridAdapter = new GridAdapter(getContext(), dezenasModelArrayList);
 
         for(int i = 1; i <= 50; i++){
             String num = Integer.toString(i);
@@ -56,17 +60,12 @@ public class RifaFragment extends Fragment {
             dezenasModelArrayList.add(dezenasModel);
         }
 
-        // Request da API para definir os valores ja marcados
-
+        GridAdapter gridAdapter = new GridAdapter(getContext(), dezenasModelArrayList);
 
         gridView.setAdapter(gridAdapter);
 
-        RifaModel rifaModel = new RifaModel();
+        RifaModel rifaModel = rifaDao.consultarRifa(Integer.toString(id));
         Bundle bundle = new Bundle();
-
-        /*
-        Logica para receber os dados da rifa do banco e fazer os sets para o objeto
-         */
 
         rifaTitulo.setText(rifaModel.getTitulo());
         rifaCriador.setText(rifaModel.getNomeCriador());
@@ -81,8 +80,9 @@ public class RifaFragment extends Fragment {
                 if(listaDezenas != null){
                     String[] arrayDezenas = listaDezenas.toArray(new String[listaDezenas.size()]);
                     bundle.putStringArray("dezenas", arrayDezenas);
-                    //bundle.putString("chavePixCriador", rifaModel.getChavePixCriador());
-                    //bundle.putString("tituloRifa", rifaModel.getTitulo());
+                    bundle.putString("chavePixCriador", rifaModel.getChavePixCriador());
+                    bundle.putString("tituloRifa", rifaModel.getTitulo());
+                    bundle.putInt("id",id);
                     Navigation.findNavController(view).navigate(R.id.action_rifaFragment_to_compraFragment,bundle);
                 } else {
                     Toast.makeText(getContext(), "Selecione pelo menos um numero", Toast.LENGTH_SHORT).show();

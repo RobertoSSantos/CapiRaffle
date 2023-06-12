@@ -16,8 +16,10 @@ import android.widget.ListView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.senaicimatec.capiraffle.R;
+import br.com.senaicimatec.capiraffle.dao.RifaDao;
 import br.com.senaicimatec.capiraffle.models.RifaModel;
 import br.com.senaicimatec.capiraffle.adapter.ListAdapter;
 
@@ -33,14 +35,9 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ArrayList<RifaModel> rifaModelArrayList =new ArrayList<>();
-
-        // Para testes
-        RifaModel rifa1 = new RifaModel(1, "Rifa relogio", "Nicoboco", "relogio", "12/07");
-        rifaModelArrayList.add(rifa1);
-        /*
-        Implementar logica para receber os dados do banco, criar os objetos e adicionar eles ao array list.
-         */
+        RifaDao rifaDao = new RifaDao(getContext());
+        List<RifaModel> rifaModelList = rifaDao.listarRifas();
+        ArrayList<RifaModel> rifaModelArrayList =new ArrayList<>(rifaModelList);
 
         FloatingActionButton cadFab = view.findViewById(R.id.cadFab);
         ListView listaRifas =view.findViewById(R.id.rifaLista);
@@ -51,8 +48,11 @@ public class HomeFragment extends Fragment {
         listaRifas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_rifaFragment);
-                // Enviar o id da rifa (ou objeto com os dados instanciados no objeto, a decidir)
+                String itemId = String.valueOf(listAdapter.getItemId(i));
+                int id = rifaDao.consultarIdRifa(itemId);
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", id);
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_rifaFragment,bundle);
             }
         });
 
