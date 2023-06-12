@@ -1,5 +1,8 @@
 package br.com.senaicimatec.capiraffle.fragments;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,10 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,6 +48,7 @@ public class HomeFragment extends Fragment {
         ArrayList<RifaModel> rifaModelArrayList =new ArrayList<>(rifaModelList);
 
         FloatingActionButton cadFab = view.findViewById(R.id.cadFab);
+        Button sorteioBtn = view.findViewById(R.id.sorteioBtn);
         ListView listaRifas =view.findViewById(R.id.rifaLista);
         ListAdapter listAdapter= new ListAdapter(getContext(),rifaModelArrayList);
 
@@ -60,6 +69,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_cadastrarRifaFragment);
+            }
+        });
+
+        sorteioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_sorteioFragment);
             }
         });
     }

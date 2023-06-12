@@ -37,7 +37,7 @@ public class ReciboFragment extends Fragment {
         String nomeComprador = getArguments().getString("nomeComprador");
         String cpfComprador = getArguments().getString("cpfComprador");
         String nomeRifa = getArguments().getString("tituloRifa");
-        ArrayList<String> data = new ArrayList<>(Arrays.asList(getArguments().getStringArray("dezenas")));
+        String dezenas = getArguments().getString("dezenas");
 
         reciboComprador = view.findViewById(R.id.reciboComprador);
         reciboCpf = view.findViewById(R.id.reciboCpf);
@@ -48,7 +48,7 @@ public class ReciboFragment extends Fragment {
         // Set das TVs
         reciboComprador.setText(nomeComprador);
         reciboCpf.setText(cpfComprador);
-        reciboNums.setText(data.toString());
+        reciboNums.setText(dezenas);
         reciboRifa.setText(nomeRifa);
 
         concluirBtn.setOnClickListener(new View.OnClickListener() {

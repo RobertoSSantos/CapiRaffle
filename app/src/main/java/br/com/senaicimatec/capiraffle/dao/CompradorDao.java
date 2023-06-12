@@ -25,44 +25,34 @@ public class CompradorDao {
 
         values.put("nomeComprador",compradorModel.getNomeComprador() );
         values.put("cpfComprador", compradorModel.getCpfComprador());
-        values.put("numSelecionados", compradorModel.getNumselecionados());
+        values.put("dezenas", compradorModel.getDezenas());
         values.put("idRifa", compradorModel.getIdRifa());
 
         return capiDatabase.insert("comprador",null,values);
     }
 
-    public ArrayList<String> consultaDezenas(String idRifa){
-        ArrayList<String> stringArrayList = new ArrayList<>();
+    public ArrayList<String> consultarDezenas(String idParam){
+        ArrayList<String> dezenas = new ArrayList<>();
+        String dezena = "";
 
-        String consulta = "SELECT numSelecionados FROM comprador WHERE idRifa = ?";
-        String[] argumentos = { idRifa };
+        String consulta = "SELECT * FROM comprador WHERE idRifa = ?";
+        String[] argumentos = {idParam};
 
         Cursor cursor = capiDatabase.rawQuery(consulta, argumentos);
 
-        if (cursor.moveToFirst()){
+        if (cursor != null && cursor.moveToFirst()) {
+            int indexColuna = cursor.getColumnIndex("dezenas");
             do{
-                String dezenaSel = cursor.getString(3);
-                stringArrayList.add(dezenaSel);
-            }while (cursor.moveToNext());
+                dezena = cursor.getString(indexColuna);
+                dezenas.add(dezena);
+            } while (cursor.moveToNext());
+
         }
 
-        cursor.close();
-        return stringArrayList;
-    }
-
-    public String consultarNum(String idRifa){
-        String dezenaSel = "";
-        String consulta = "SELECT numSelecionados FROM comprador WHERE idRifa = ?";
-        String[] argumentos = { idRifa };
-
-        Cursor c = capiDatabase.rawQuery(consulta, argumentos);
-
-        if (c.moveToFirst()){
-            do{
-                dezenaSel = c.getString(3);
-            }while (c.moveToNext());
+        if (cursor != null) {
+            cursor.close();
         }
-        c.close();
-        return dezenaSel;
+
+        return dezenas;
     }
 }

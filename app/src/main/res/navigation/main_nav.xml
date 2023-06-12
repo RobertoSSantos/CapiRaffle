@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_rifaFragment"
             app:destination="@id/rifaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_sorteioFragment"
+            app:destination="@id/sorteioFragment" />
     </fragment>
     <fragment
         android:id="@+id/cadastrarRifaFragment"
@@ -35,13 +38,13 @@
             android:id="@+id/action_compraFragment_to_reciboFragment"
             app:destination="@id/reciboFragment" />
         <argument
-            android:name="dezenas"
-            app:argType="string[]" />
-        <argument
             android:name="chavePixCriador"
             app:argType="string" />
         <argument
             android:name="tituloRifa"
+            app:argType="string" />
+        <argument
+            android:name="dezenas"
             app:argType="string" />
     </fragment>
     <fragment
@@ -75,7 +78,7 @@
             app:argType="string" />
         <argument
             android:name="dezenas"
-            app:argType="string[]" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -86,4 +89,9 @@
             android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/sorteioFragment"
+        android:name="br.com.senaicimatec.capiraffle.fragments.SorteioFragment"
+        android:label="fragment_sorteio"
+        tools:layout="@layout/fragment_sorteio" />
 </navigation>

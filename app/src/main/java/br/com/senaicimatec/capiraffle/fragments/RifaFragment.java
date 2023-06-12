@@ -37,9 +37,11 @@ public class RifaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RifaDao rifaDao = new RifaDao(getContext());
+        CompradorDao compradorDao = new CompradorDao(getContext());
         ArrayList<DezenasModel> dezenasModelArrayList = new ArrayList<>();
 
         int id = getArguments().getInt("id");
+        ArrayList<String> arrayDezenas = compradorDao.consultarDezenas(Integer.toString(id));
 
         TextView rifaTitulo, rifaCriador, rifaPremio, rifaValNum, rifaData;
         GridView gridView;
@@ -60,6 +62,12 @@ public class RifaFragment extends Fragment {
             dezenasModelArrayList.add(dezenasModel);
         }
 
+        for (DezenasModel dezena : dezenasModelArrayList) {
+            if (arrayDezenas.contains(dezena.getDezena())) {
+                dezena.setCondicao(false);
+            }
+        }
+
         GridAdapter gridAdapter = new GridAdapter(getContext(), dezenasModelArrayList);
 
         gridView.setAdapter(gridAdapter);
@@ -78,11 +86,21 @@ public class RifaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(listaDezenas != null){
-                    String[] arrayDezenas = listaDezenas.toArray(new String[listaDezenas.size()]);
-                    bundle.putStringArray("dezenas", arrayDezenas);
+                    StringBuilder builder = new StringBuilder();
+                    for (String item : listaDezenas) {
+                        if (builder.length() > 0) {
+                            builder.append(", ");
+                        }
+                        builder.append(item);
+                    }
+
+                    String dezenas = builder.toString();
+
+                    bundle.putString("dezenas", dezenas);
                     bundle.putString("chavePixCriador", rifaModel.getChavePixCriador());
                     bundle.putString("tituloRifa", rifaModel.getTitulo());
                     bundle.putInt("id",id);
+
                     Navigation.findNavController(view).navigate(R.id.action_rifaFragment_to_compraFragment,bundle);
                 } else {
                     Toast.makeText(getContext(), "Selecione pelo menos um numero", Toast.LENGTH_SHORT).show();

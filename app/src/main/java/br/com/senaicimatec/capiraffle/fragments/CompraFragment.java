@@ -47,7 +47,7 @@ public class CompraFragment extends Fragment {
         int id = getArguments().getInt("id");
         String tituloRifa = getArguments().getString("tituloRifa");
         String chavePix = getArguments().getString("chavePixCriador");
-        ArrayList<String> data = new ArrayList<>(Arrays.asList(getArguments().getStringArray("dezenas")));
+        String dezenas = getArguments().getString("dezenas");
 
         nomeComprador = view.findViewById(R.id.cadastroNomeComprador);
         cpfComprador = view.findViewById(R.id.cadastroCpfComprador);
@@ -57,7 +57,7 @@ public class CompraFragment extends Fragment {
 
         EditText[] editTexts = {nomeComprador, cpfComprador};
 
-        numsTv.setText(data.toString());
+        numsTv.setText(dezenas);
         pixTv.setText(chavePix);
 
         finalizarCompraBtn.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,7 @@ public class CompraFragment extends Fragment {
                 } else {
                     compradorModel.setNomeComprador(nomeComprador.getText().toString());
                     compradorModel.setCpfComprador(cpfComprador.getText().toString());
-                    compradorModel.setNumselecionados(data.toString());
+                    compradorModel.setDezenas(dezenas);
                     compradorModel.setIdRifa(id);
 
                     long id = compradorDao.inserirComprador(compradorModel);
@@ -85,7 +85,7 @@ public class CompraFragment extends Fragment {
                     bundle.putString("nomeComprador", compradorModel.getNomeComprador());
                     bundle.putString("cpfComprador", compradorModel.getCpfComprador());
                     bundle.putString("tituloRifa", tituloRifa);
-                    bundle.putStringArray("dezenas", data.toArray(new String[data.size()]));
+                    bundle.putString("dezenas", dezenas);
 
                     Navigation.findNavController(view).navigate(R.id.action_compraFragment_to_reciboFragment, bundle);
                     Toast.makeText(getContext(), "Compra Realizada! comprador inserido no banco com id " + id, Toast.LENGTH_SHORT).show();

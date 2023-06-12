@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class Database extends SQLiteOpenHelper {
 
     private static final String db_name = "capiDatabase";
-    private static  final int db_version = 1;
+    private static  final int db_version = 2;
 
 
     public Database(Context context){
@@ -37,9 +37,8 @@ public class Database extends SQLiteOpenHelper {
                 .append("id INTEGER PRIMARY KEY autoincrement,")
                 .append("nomeComprador VARCHAR(50),")
                 .append("cpfComprador VARCHAR(50),")
-                .append("numSelecionados VARCHAR(50),")
-                .append("idRifa INTEGER,")
-                .append("FOREIGN KEY(idRifa) REFERENCES rifa(id) )");
+                .append("dezenas VARCHAR(50),")
+                .append("idRifa INTEGER )");
 
         sqLiteDatabase.execSQL(rifaTable.toString());
         sqLiteDatabase.execSQL(compradorTable.toString());
@@ -47,6 +46,29 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        StringBuilder rifaTable, compradorTable;
+        rifaTable = new StringBuilder()
+                .append("CREATE TABLE IF NOT EXISTS ")
+                .append("rifa(")
+                .append("id INTEGER PRIMARY KEY autoincrement,")
+                .append("nomeCriador VARCHAR(50),")
+                .append("cpfCriador VARCHAR(50),")
+                .append("chavePixCriador VARCHAR(50),")
+                .append("titulo VARCHAR(50),")
+                .append("premio VARCHAR(50),")
+                .append("valNum VARCHAR(50),")
+                .append("dataFinal VARCHAR(50) )");
 
+        compradorTable = new StringBuilder()
+                .append("CREATE TABLE IF NOT EXISTS ")
+                .append("comprador(")
+                .append("id INTEGER PRIMARY KEY autoincrement,")
+                .append("nomeComprador VARCHAR(50),")
+                .append("cpfComprador VARCHAR(50),")
+                .append("dezenas VARCHAR(50),")
+                .append("idRifa INTEGER )");
+
+        sqLiteDatabase.execSQL(rifaTable.toString());
+        sqLiteDatabase.execSQL(compradorTable.toString());
     }
 }

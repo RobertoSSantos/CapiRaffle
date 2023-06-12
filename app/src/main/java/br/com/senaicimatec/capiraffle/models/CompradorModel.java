@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class CompradorModel implements Serializable {
     private Integer idComprador, idRifa;
-    private String nomeComprador, cpfComprador, numselecionados;
+    private String nomeComprador, cpfComprador, dezenas;
 
     public CompradorModel(){
 
@@ -42,11 +42,11 @@ public class CompradorModel implements Serializable {
         this.cpfComprador = cpfComprador;
     }
 
-    public String getNumselecionados() {
-        return numselecionados;
+    public String getDezenas() {
+        return dezenas;
     }
 
-    public void setNumselecionados(String numselecionados) {
-        this.numselecionados = numselecionados;
+    public void setDezenas(String dezenas) {
+        this.dezenas = dezenas;
     }
 }
