@@ -1,7 +1,7 @@
 # CapiRaffle
 
 ## Introdução
-Bem vindo à wiki do CapiRaffle! 
+Bem vindo ao CapiRaffle! 
 
 Aqui você vai encontrar a documentação do projeto respectiva ao front end do projeto: sua main, modelos, fragmentos e adapters .java, camadas .xml e dicionário de dados.
 
