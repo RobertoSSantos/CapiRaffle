@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.JsonObject;
+
 import br.com.senaicimatec.capiraffle.R;
 import br.com.senaicimatec.capiraffle.api.SorteioService;
 import br.com.senaicimatec.capiraffle.models.SorteioModel;
@@ -37,7 +39,7 @@ public class SorteioFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.random.org/")
+                .baseUrl("https://rolz.org/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -54,14 +56,15 @@ public class SorteioFragment extends Fragment {
 
     public void recuperaDados(){
         SorteioService sorteioService = retrofit.create(SorteioService.class);
-        Call<SorteioModel> call = sorteioService.RecuperaDados();
+        Call<SorteioModel> call = sorteioService.recuperaDados();
 
         call.enqueue(new Callback<SorteioModel>() {
             @Override
             public void onResponse(Call<SorteioModel> call, Response<SorteioModel> response) {
-                SorteioModel valor = response.body();
-                resultSorteio.setText(valor.getValor());
-
+                if(response.isSuccessful()){
+                    SorteioModel valor = response.body();
+                    resultSorteio.setText(valor.getResult());
+                }
             }
 
             @Override
