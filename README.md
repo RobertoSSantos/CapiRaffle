@@ -22,4 +22,8 @@ O CapiRaffle foi um projeto criado com o propósito de validação de nota para 
 3. Escolher uma rifa disponível e comprar sua dezena.
 4. Sorteio de dezena da rifa
 
-## Imagens do aplicativo
+## Detalhes do Projeto
+O projeto foi desenvolvido usando a arquitetura single-activity, a qual se concentra em ter uma única atividade principal em seu aplicativo, na qual a maior parte do fluxo do aplicativo é controlada. Ao invés de ter várias atividades representando diferentes telas, você tem apenas uma atividade principal que atua como um container para exibir fragmentos ou componentes visuais dentro dela. 
+Em conjunto a isso, foi utilizada a biblioteca Navigation Component para gerenciar a navegação entre as telas, por meio de uma estrutura declarativa e poderosa para o roteamento entre destinos. Por meio de um gráfico de navegação, localizado no arquivo main_nav.xml, um modelo visual da estrutura de navegação do aplicativo, podemos definir as ações de navegação entre eles, como a transição de uma tela para outra e passagem de argumentos entre destinos. 
+
+![Gráfico de Navegação](C:\Users\soran\Pictures\navComp.png)
