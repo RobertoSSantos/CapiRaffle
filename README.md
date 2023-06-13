@@ -26,4 +26,4 @@ O CapiRaffle foi um projeto criado com o propósito de validação de nota para 
 O projeto foi desenvolvido usando a arquitetura single-activity, a qual se concentra em ter uma única atividade principal em seu aplicativo, na qual a maior parte do fluxo do aplicativo é controlada. Ao invés de ter várias atividades representando diferentes telas, você tem apenas uma atividade principal que atua como um container para exibir fragmentos ou componentes visuais dentro dela. 
 Em conjunto a isso, foi utilizada a biblioteca Navigation Component para gerenciar a navegação entre as telas, por meio de uma estrutura declarativa e poderosa para o roteamento entre destinos. Por meio de um gráfico de navegação, localizado no arquivo main_nav.xml, um modelo visual da estrutura de navegação do aplicativo, podemos definir as ações de navegação entre eles, como a transição de uma tela para outra e passagem de argumentos entre destinos. 
 
-![Gráfico de Navegação](C:\Users\soran\Pictures\navComp.png)
+![navComp](https://github.com/RobertoSSantos/CapiRaffle/assets/118369354/6d32fc7b-6345-4fe1-8b01-b4fe4a7bba2a)
